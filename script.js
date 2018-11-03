@@ -26,27 +26,27 @@ function setup() {
 
             }
             else if (matrix[y][x] == 2) {
-                voshxarArr.push(new voshxar(x, y, 2));
+                voshxarArr.push(new Voshxar(x, y, 2));
 
             }
             else if (matrix[y][x] == 3) {
-                gishatichArr.push(new gishatich(x, y, 3));
+                gishatichArr.push(new Gishatich(x, y, 3));
 
             }
             else if (matrix[y][x] == 4) {
-                amenakerArr.push(new amenaker(x, y, 4));
+                amenakerArr.push(new Amenaker(x, y, 4));
 
             }
             else if (matrix[y][x] == 5) {
-                fermerArr.push(new fermer(x, y, 5));
+                fermerArr.push(new Fermer(x, y, 5));
             }
         }
     }
     // console.log(grassArr);
-    for (var i in grassArr) {
-        var found = grassArr[i].chooseCell(0);
-        //console.log(found);
-    }
+    // for (var i in grassArr) {
+    //     var found = grassArr[i].chooseCell(0);
+    //     //console.log(found);
+    // }
 }
 function draw() {
     for (var y = 0; y < matrix.length; y++) {
