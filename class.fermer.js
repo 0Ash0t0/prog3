@@ -2,6 +2,7 @@ class Fermer extends Base {
     constructor(x, y, index) {
         super(x, y, index);
         this.energy = 10;
+        this.a = 0;
     }
     chooseCellmul(arr) {
         this.getNewCoordinates();
@@ -29,7 +30,7 @@ class Fermer extends Base {
                 else if (this.a > 10) {
                     matrix[this.y][this.x] = 1;
                     matrix[newY][newX] = 5;
-                    var newVoshxar = new voshxar(newX, newY, 2);
+                    var newVoshxar = new Voshxar(newX, newY, 2);
                     voshxarArr.push(newVoshxar);
                     this.x = newX;
                     this.y = newY;

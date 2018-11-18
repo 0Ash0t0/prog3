@@ -10,6 +10,12 @@ class Voshxar extends Base {
     }
 
     eat() {
+        if(exanak == "Գարուն"){
+            var m = 5;
+        }
+        else{
+            var m = 10;
+        }
         this.getNewCoordinates();
         var grassCells = this.chooseCellmul([1]);
         var newCell = random(grassCells);
@@ -31,7 +37,7 @@ class Voshxar extends Base {
             this.move();
 
         }
-        if (this.energy == 10) {
+        if (this.energy == m) {
             this.mul();
         }
 

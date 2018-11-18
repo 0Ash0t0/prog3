@@ -36,7 +36,7 @@ class Gishatich extends Base {
 
             var newGishatich = new Gishatich(newX, newY, this.index);
             gishatichArr.push(newGishatich);
-            this.energy = 7;
+            this.energy = 3;
         }
     }
     eat() {
@@ -65,7 +65,13 @@ class Gishatich extends Base {
             this.move();
 
         }
-        if (this.energy >= 7) {
+        if(ex == "Գարուն"){
+            var m = 6
+        }
+        else{
+            var m = 10
+        }
+        if (this.energy >= m) {
             this.mul();
         }
         else if (this.energy <= 0) {

@@ -32,26 +32,31 @@ class Amenaker extends Base {
             matrix[this.y][this.x] = 0;
             if (matrix[newCell[1]][newCell[0]] == 3) {
                 for (var i in gishatichArr) {
-                    gishatichArr.splice(i, 1);
-                    //console.log("kerav gishatich");
-                    this.energy++;
-                    break;
+                    if (this.x == gishatichArr[i].x && this.y == gishatichArr[i].y) {
+                        gishatichArr.splice(i, 1);
+                        //console.log("kerav gishatich");
+                        this.energy++;
+                        break;
+                    }
                 }
             }
             else if (matrix[newCell[1]][newCell[0]] == 2) {
                 for (var i in voshxarArr) {
-                    voshxarArr.splice(i, 1);
-                    //console.log("kerav voshxar");
-                    this.energy++;
-                    break;
+                    if (this.x == voshxarArr[i].x && this.y == voshxarArr[i].y) {
+                        matrix[this.y][this.x] = 0;
+                        voshxarArr.splice(i, 1);
+                        break;
+                    }
                 }
             }
             else if (matrix[newCell[1]][newCell[0]] == 1) {
                 for (var i in grassArr) {
-                    grassArr.splice(i, 1);
-                    // console.log("kerav xot");
-                    this.energy++;
-                    break;
+                    if (this.x == grassArr[i].x && this.y == grassArr[i].y) {
+                        grassArr.splice(i, 1);
+                        // console.log("kerav xot");
+                        this.energy++;
+                        break;
+                    }
                 }
             }
             matrix[newCell[1]][newCell[0]] = 4;

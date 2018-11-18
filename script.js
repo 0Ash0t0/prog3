@@ -7,6 +7,7 @@ var voshxarArr = [];
 var gishatichArr = [];
 var amenakerArr = [];
 var fermerArr = [];
+var ex;
 
 
 function setup() {
@@ -49,36 +50,7 @@ function setup() {
     // }
 }
 function draw() {
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 1) {
-                fill("green");
-                rect(x * side, y * side, side, side);
-
-            }
-            else if (matrix[y][x] == 2) {
-                fill("yellow");
-                rect(x * side, y * side, side, side);
-
-            }
-            else if (matrix[y][x] == 3) {
-                fill("red");
-                rect(x * side, y * side, side, side);
-            }
-            else if (matrix[y][x] == 4) {
-                fill("purple");
-                rect(x * side, y * side, side, side);
-            }
-            else if (matrix[y][x] == 5) {
-                fill("#ffe4c5");
-                rect(x * side, y * side, side, side);
-            }
-            else if (matrix[y][x] == 0) {
-                fill("#acacac");
-                rect(x * side, y * side, side, side);
-            }
-        }
-    }
+    exanak();
     for (var i in grassArr) {
         grassArr[i].mul();
     }
@@ -96,3 +68,139 @@ function draw() {
         fermerArr[i].eat();
     }
 }
+function exanak() {
+    var p = document.getElementById("p");
+    //var aui = [0, 255];
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+            //Garun
+            if (frameCount % 40 > 10 && frameCount % 40 <= 20) {
+                if (matrix[y][x] == 1) {
+                    fill("#bfff00");
+                    rect(x * side, y * side, side, side);
+
+                }
+                else if (matrix[y][x] == 2) {
+                    fill("yellow");
+                    rect(x * side, y * side, side, side);
+
+                }
+                else if (matrix[y][x] == 3) {
+                    fill("red");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 4) {
+                    fill("purple");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 5) {
+                    fill("#ffe4c5");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 0) {
+                    fill("#acacac");
+                    rect(x * side, y * side, side, side);
+                }
+                ex = "Գարուն";
+                p.innerText = "Գարուն";
+            }
+            //amar
+            else if (frameCount % 40 > 20 && frameCount % 40 <= 30) {
+
+                if (matrix[y][x] == 1) {
+                    fill("green");
+                    rect(x * side, y * side, side, side);
+
+                }
+                else if (matrix[y][x] == 2) {
+                    fill("yellow");
+                    rect(x * side, y * side, side, side);
+
+                }
+                else if (matrix[y][x] == 3) {
+                    fill("red");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 4) {
+                    fill("purple");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 5) {
+                    fill("#ffe4c5");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 0) {
+                    fill("#acacac");
+                    rect(x * side, y * side, side, side);
+                }
+                ex = "Ամառ";
+                p.innerText = "Ամառ";
+            }
+            //dzmer
+            else if (frameCount % 40 > 0 && frameCount % 40 <= 10) {
+                if (matrix[y][x] == 1) {
+                    fill("white");
+                    rect(x * side, y * side, side, side);
+
+                }
+                else if (matrix[y][x] == 2) {
+                    fill("yellow");
+                    rect(x * side, y * side, side, side);
+
+                }
+                else if (matrix[y][x] == 3) {
+                    fill("red");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 4) {
+                    fill("purple");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 5) {
+                    fill("#ffe4c5");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 0) {
+                    fill("#acacac");
+                    rect(x * side, y * side, side, side);
+                }
+                ex = "Ձմեռ";
+                p.innerText = "Ձմեռ";
+            }
+
+            //ashun
+            else if (frameCount % 40 > 30 && frameCount % 40 <= 40) {
+
+                if (matrix[y][x] == 1) {
+                    fill("orange");
+                    rect(x * side, y * side, side, side);
+
+                }
+                else if (matrix[y][x] == 2) {
+                    fill("yellow");
+                    rect(x * side, y * side, side, side);
+
+                }
+                else if (matrix[y][x] == 3) {
+                    fill("red");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 4) {
+                    fill("purple");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 5) {
+                    fill("#ffe4c5");
+                    rect(x * side, y * side, side, side);
+                }
+                else if (matrix[y][x] == 0) {
+                    fill("#acacac");
+                    rect(x * side, y * side, side, side);
+                }
+                ex = "Աշուն";
+                p.innerText = "Աշուն";
+            }
+        }
+    }
+}
+
