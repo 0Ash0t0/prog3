@@ -2,6 +2,7 @@ class Voshxar extends Base {
     constructor(x, y, index) {
         super(x, y, index);
         this.energy = 8;
+        this.gender = Math.round(Math.random())
     }
 
     chooseCellmul(arr) {
@@ -10,10 +11,10 @@ class Voshxar extends Base {
     }
 
     eat() {
-        if(exanak == "Գարուն"){
+        if (exanak == "Գարուն") {
             var m = 5;
         }
-        else{
+        else {
             var m = 10;
         }
         this.getNewCoordinates();
@@ -72,18 +73,29 @@ class Voshxar extends Base {
         }
     }
     mul() {
-        var emptyCells = this.chooseCellmul([0]);
-        var newCell = random(emptyCells);
+        if (this.gender == 0){
+            var g = 1
+        }
+        else{
+            var g = 0
+        }
+        var emptyCells = this.chooseCellmul([1])
+        for(var i in this.found){
+            if (found[i].gender == g) {
+                var emptyCells = this.chooseCellmul([0]);
+                var newCell = random(emptyCells);
 
-        // console.log(emptyCells);
-        if (newCell) {
-            var newX = newCell[0];
-            var newY = newCell[1];
-            matrix[newY][newX] = this.index;
+                // console.log(emptyCells);
+                if (newCell) {
+                    var newX = newCell[0];
+                    var newY = newCell[1];
+                    matrix[newY][newX] = this.index;
 
-            var newVoshxar = new Voshxar(newX, newY, this.index);
-            voshxarArr.push(newVoshxar);
-            this.energy = 7;
+                    var newVoshxar = new Voshxar(newX, newY, this.index);
+                    voshxarArr.push(newVoshxar);
+                    this.energy = 7;
+                }
+            }
         }
     }
 }
