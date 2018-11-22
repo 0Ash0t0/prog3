@@ -33,71 +33,77 @@ class Gishatich extends Base {
             var g = 0
         }
         var emptyCells = this.chooseCellmul([1])
-        for (var i in this.found) {
-            if (found[i].gender == g) {
-                var emptyCells = this.chooseCellmul([0]);
-                var newCell = random(emptyCells);
+        for (var i in emptyCells) {
+            if (emptyCells[i].gender == g) {
+                var beg = []
+                beg.push(emptyCells[i])
+                for (var k in beg) {
+                    if (beg[k].energy == m) {
+                        var emptyCells = this.chooseCellmul([0]);
+                        var newCell = random(emptyCells);
 
-                // console.log(emptyCells);
-                if (newCell) {
-                    var newX = newCell[0];
-                    var newY = newCell[1];
-                    matrix[newY][newX] = this.index;
+                        // console.log(emptyCells);
+                        if (newCell) {
+                            var newX = newCell[0];
+                            var newY = newCell[1];
+                            matrix[newY][newX] = this.index;
 
-                    var newGishatich = new Gishatich(newX, newY, this.index);
-                    gishatichArr.push(newGishatich);
-                    this.energy = 3;
+                            var newGishatich = new Gishatich(newX, newY, this.index);
+                            gishatichArr.push(newGishatich);
+                            this.energy = 3;
+                        }
+                    }
                 }
             }
         }
     }
-            eat() {
-                this.getNewCoordinates();
-                var gishatichCells = this.chooseCellmul([2]);
-                var newCell = random(gishatichCells);
-                if (newCell) {
-                    matrix[this.y][this.x] = 0;
+    eat() {
+        this.getNewCoordinates();
+        var gishatichCells = this.chooseCellmul([2]);
+        var newCell = random(gishatichCells);
+        if (newCell) {
+            matrix[this.y][this.x] = 0;
 
 
-                    matrix[newCell[1]][newCell[0]] = 3;
+            matrix[newCell[1]][newCell[0]] = 3;
 
-                    for (var i in voshxarArr) {
+            for (var i in voshxarArr) {
 
-                        if (newCell[0] == voshxarArr[i].x && newCell[1] == voshxarArr[i].y) {
-                            voshxarArr.splice(i, 1);
-                            break;
-                        }
-                    }
-                    this.x = newCell[0];
-                    this.y = newCell[1];
-
-                    this.energy++;
+                if (newCell[0] == voshxarArr[i].x && newCell[1] == voshxarArr[i].y) {
+                    voshxarArr.splice(i, 1);
+                    break;
                 }
-                else {
-                    this.move();
-
-                }
-                if (ex == "Գարուն") {
-                    var m = 6
-                }
-                else {
-                    var m = 10
-                }
-                if (this.energy >= m) {
-                    this.mul();
-                }
-                else if (this.energy <= 0) {
-                    this.die();
-                }
-                // console.log(this.energy);
             }
-            die() {
-                for (var i in gishatichArr) {
-                    if (this.x == gishatichArr[i].x && this.y == gishatichArr[i].y) {
-                        matrix[this.y][this.x] = 0;
-                        gishatichArr.splice(i, 1);
-                        break;
-                    }
-                }
+            this.x = newCell[0];
+            this.y = newCell[1];
+
+            this.energy++;
+        }
+        else {
+            this.move();
+
+        }
+        if (ex == "Գարուն") {
+            var m = 6
+        }
+        else {
+            var m = 10
+        }
+        if (this.energy >= m) {
+            this.mul();
+        }
+        else if (this.energy <= 0) {
+            this.die();
+        }
+        // console.log(this.energy);
+    }
+    die() {
+        for (var i in gishatichArr) {
+            if (this.x == gishatichArr[i].x && this.y == gishatichArr[i].y) {
+                matrix[this.y][this.x] = 0;
+                gishatichArr.splice(i, 1);
+                break;
             }
         }
+    }
+}

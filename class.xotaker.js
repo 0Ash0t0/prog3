@@ -73,27 +73,33 @@ class Voshxar extends Base {
         }
     }
     mul() {
-        if (this.gender == 0){
+        if (this.gender == 0) {
             var g = 1
         }
-        else{
+        else {
             var g = 0
         }
         var emptyCells = this.chooseCellmul([1])
-        for(var i in this.found){
-            if (found[i].gender == g) {
-                var emptyCells = this.chooseCellmul([0]);
-                var newCell = random(emptyCells);
+        for (var i in emptyCells) {
+            if (emptyCells[i].gender == g) {
+                var bex = []
+                bex.push(emptyCells[i])
+                for (var k in bex) {
+                    if (bex[k].energy == m) {
+                        var emptyCells = this.chooseCellmul([0]);
+                        var newCell = random(emptyCells);
 
-                // console.log(emptyCells);
-                if (newCell) {
-                    var newX = newCell[0];
-                    var newY = newCell[1];
-                    matrix[newY][newX] = this.index;
+                        // console.log(emptyCells);
+                        if (newCell) {
+                            var newX = newCell[0];
+                            var newY = newCell[1];
+                            matrix[newY][newX] = this.index;
 
-                    var newVoshxar = new Voshxar(newX, newY, this.index);
-                    voshxarArr.push(newVoshxar);
-                    this.energy = 7;
+                            var newVoshxar = new Voshxar(newX, newY, this.index);
+                            voshxarArr.push(newVoshxar);
+                            this.energy = 7;
+                        }
+                    }
                 }
             }
         }

@@ -7,6 +7,7 @@ var voshxarArr = [];
 var gishatichArr = [];
 var amenakerArr = [];
 var fermerArr = [];
+var atomArr = []
 var ex;
 
 
@@ -19,6 +20,7 @@ function setup() {
     }
     frameRate(20);
     createCanvas(matrix[0].length * side, matrix.length * side);
+    //cnv.mouseClicked(atom)
     background('#acacac');
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -40,6 +42,9 @@ function setup() {
             }
             else if (matrix[y][x] == 5) {
                 fermerArr.push(new Fermer(x, y, 5));
+            }
+            else if (matrix[y][x] == 6) {
+                atomArr.push(new Atom(x, y, 6));
             }
         }
     }
@@ -66,6 +71,9 @@ function draw() {
     }
     for (var i in fermerArr) {
         fermerArr[i].eat();
+    }
+    for (var i in atomArr) {
+        atomArr[i].boom();
     }
 }
 function exanak() {
@@ -193,6 +201,10 @@ function exanak() {
                     fill("#ffe4c5");
                     rect(x * side, y * side, side, side);
                 }
+                else if (matrix[y][x] == 6) {
+                    fill("black");
+                    rect(x * side, y * side, side, side);
+                }
                 else if (matrix[y][x] == 0) {
                     fill("#acacac");
                     rect(x * side, y * side, side, side);
@@ -203,4 +215,62 @@ function exanak() {
         }
     }
 }
+function mouseClicked() {
+    console.log("asdfadsf")
+    
+    var x = mouseX;
+    var y = mouseY;
+    var i = Math.floor(x/side);
+    var k = Math.floor(y/side);
+    //console.log(i,k)
+    matrix[k][i] = 6
 
+
+
+    if (matrix[k][i] == 5) {
+        for (var i in fermerArr) {
+            if (this.x == fermerArr[i].x && this.y == fermerArr[i].y) {
+                fermerArr.splice(i, 1);
+                this.energy++;
+                break;
+            }
+        }
+    }
+    if (matrix[k][i] == 4) {
+        for (var i in amenakerArr) {
+            if (this.x == amenakerArr[i].x && this.y == amenakerArr[i].y) {
+                amenakerArr.splice(i, 1);
+                this.energy++;
+                break;
+            }
+        }
+    }
+    if (matrix[k][i] == 3) {
+        for (var i in gishatichArr) {
+            if (this.x == gishatichArr[i].x && this.y == gishatichArr[i].y) {
+                gishatichArr.splice(i, 1);
+                this.energy++;
+                break;
+            }
+        }
+    }
+    else if (matrix[k][i] == 2) {
+        for (var i in voshxarArr) {
+            if (this.x == voshxarArr[i].x && this.y == voshxarArr[i].y) {
+                matrix[this.y][this.x] = 0;
+                voshxarArr.splice(i, 1);
+                break;
+            }
+        }
+    }
+    else if (matrix[k][i] == 1) {
+        for (var i in grassArr) {
+            if (this.x == grassArr[i].x && this.y == grassArr[i].y) {
+                grassArr.splice(i, 1);
+                this.energy++;
+                break;
+            }
+        }
+    }
+    atomArr.push(new Atom(i, k, 6));
+}
