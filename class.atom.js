@@ -27,7 +27,109 @@ class Atom extends Base {
             [this.x - 2, this.y + 1],
             [this.x - 2, this.y],
             [this.x - 2, this.y - 1],
-            [this.x - 2, this.y - 2]
+            [this.x - 2, this.y - 2],
+
+            [this.x, this.y + 3],
+            [this.x - 1, this.y + 3],
+            [this.x - 2, this.y + 3],
+            [this.x - 3, this.y + 3],
+            [this.x + 1, this.y + 3],
+            [this.x + 2, this.y + 3],
+            [this.x + 3, this.y + 3],
+
+            [this.x + 3, this.y + 2],
+            [this.x - 3, this.y + 2],
+            [this.x + 3, this.y + 1],
+            [this.x - 3, this.y + 1],
+            [this.x + 3, this.y],
+            [this.x - 3, this.y],
+            [this.x + 3, this.y - 1],
+            [this.x - 3, this.y - 1],
+            [this.x + 3, this.y - 2],
+            [this.x - 3, this.y - 2],
+
+            [this.x - 1, this.y - 3],
+            [this.x - 2, this.y - 3],
+            [this.x - 3, this.y - 3],
+            [this.x + 1, this.y - 3],
+            [this.x + 2, this.y - 3],
+            [this.x + 3, this.y - 3],
+
+            [this.x, this.y + 4],
+            [this.x - 1, this.y + 4],
+            [this.x - 2, this.y + 4],
+            [this.x - 3, this.y + 4],
+            [this.x - 4, this.y + 4],
+            [this.x + 1, this.y + 4],
+            [this.x + 2, this.y + 4],
+            [this.x + 3, this.y + 4],
+            [this.x + 4, this.y + 4],
+
+            [this.x + 4, this.y + 3],
+            [this.x - 4, this.y + 3],
+            [this.x + 4, this.y + 2],
+            [this.x - 4, this.y + 2],
+            [this.x + 4, this.y + 1],
+            [this.x - 4, this.y + 1],
+            [this.x + 4, this.y],
+            [this.x - 4, this.y],
+            [this.x + 4, this.y - 2],
+            [this.x - 4, this.y - 2],
+            [this.x + 4, this.y - 1],
+            [this.x - 4, this.y - 1],
+            [this.x + 4, this.y - 3],
+            [this.x - 4, this.y - 3],
+
+            [this.x - 1, this.y - 4],
+            [this.x - 2, this.y - 4],
+            [this.x - 3, this.y - 4],
+            [this.x - 4, this.y - 4],
+            [this.x + 1, this.y - 4],
+            [this.x + 2, this.y - 4],
+            [this.x + 3, this.y - 4],
+            [this.x + 4, this.y - 4],
+
+            [this.x, this.y + 5],
+            [this.x - 1, this.y + 5],
+            [this.x - 2, this.y + 5],
+            [this.x - 3, this.y + 5],
+            [this.x - 4, this.y + 5],
+            [this.x + 1, this.y + 5],
+            [this.x + 2, this.y + 5],
+            [this.x + 3, this.y + 5],
+            [this.x + 4, this.y + 5],
+            [this.x + 5, this.y + 5],
+
+
+            [this.x + 5, this.y + 4],
+            [this.x - 5, this.y + 4],
+            [this.x + 5, this.y + 3],
+            [this.x - 5, this.y + 3],
+            [this.x + 5, this.y + 2],
+            [this.x - 5, this.y + 2],
+            [this.x + 5, this.y + 1],
+            [this.x - 5, this.y + 1],
+            [this.x + 5, this.y],
+            [this.x - 5, this.y],
+            [this.x + 5, this.y - 2],
+            [this.x - 5, this.y - 2],
+            [this.x + 5, this.y - 1],
+            [this.x - 5, this.y - 1],
+            [this.x + 5, this.y - 3],
+            [this.x - 5, this.y - 3],
+            [this.x + 5, this.y - 4],
+            [this.x - 5, this.y - 4],
+
+            [this.x - 1, this.y - 5],
+            [this.x - 2, this.y - 5],
+            [this.x - 3, this.y - 5],
+            [this.x - 4, this.y - 5],
+            [this.x - 5, this.y - 5],
+            [this.x + 1, this.y - 5],
+            [this.x + 2, this.y - 5],
+            [this.x + 3, this.y - 5],
+            [this.x + 4, this.y - 5],
+            [this.x + 5, this.y - 5]
 
         ]
     }
@@ -47,7 +149,7 @@ class Atom extends Base {
                 }
 
                 else if (matrix[newY][newX] == 2) {
-                    for (var i in voshxarArr ) {
+                    for (var i in voshxarArr) {
                         if (newX == voshxarArr[i].x && newY == voshxarArr[i].y) {
                             matrix[newY][newX] = 0;
                             voshxarArr.splice(i, 1);
