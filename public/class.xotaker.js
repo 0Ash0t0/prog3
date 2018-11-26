@@ -11,12 +11,6 @@ class Voshxar extends Base {
     }
 
     eat() {
-        if (exanak == "Գարուն") {
-            var m = 5;
-        }
-        else {
-            var m = 10;
-        }
         this.getNewCoordinates();
         var grassCells = this.chooseCellmul([1]);
         var newCell = random(grassCells);
@@ -38,7 +32,7 @@ class Voshxar extends Base {
             this.move();
 
         }
-        if (this.energy == m) {
+        if (this.energy >= 10) {
             this.mul();
         }
 
@@ -48,9 +42,7 @@ class Voshxar extends Base {
     }
     move() {
         var emptyCells = this.chooseCellmul([0]);
-        //console.log(emptyCells);
         var newCell = random(emptyCells);
-        // console.log(emptyCells);
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -59,6 +51,9 @@ class Voshxar extends Base {
 
             this.x = newX;
             this.y = newY;
+            this.energy -= 5;
+        }
+        else {
             this.energy--;
         }
 
@@ -73,31 +68,38 @@ class Voshxar extends Base {
         }
     }
     mul() {
+        if(exanak == "Գարուն"){
+            var m = 5 
+        }
+        else{
+            var m = 10 
+        }
         if (this.gender == 0) {
             var g = 1
         }
         else {
             var g = 0
         }
-        var emptyCells = this.chooseCellmul([1])
-        for (var i in emptyCells) {
-            if (emptyCells[i].gender == g) {
-                var bex = []
-                bex.push(emptyCells[i])
-                for (var k in bex) {
-                    if (bex[k].energy == m) {
-                        var emptyCells = this.chooseCellmul([0]);
-                        var newCell = random(emptyCells);
-
-                        // console.log(emptyCells);
-                        if (newCell) {
-                            var newX = newCell[0];
-                            var newY = newCell[1];
-                            matrix[newY][newX] = this.index;
-
-                            var newVoshxar = new Voshxar(newX, newY, this.index);
-                            voshxarArr.push(newVoshxar);
-                            this.energy = 7;
+        var voshxarner = this.chooseCellmul([2])
+        for (var i in voshxarner) {
+            for (var l in voshxarArr) {
+                if(voshxarArr[l].y == voshxarner[i][1] && voshxarArr[l].x == voshxarner[i][0]){
+                    if (voshxarArr[l].gender == g) {
+                        var bex = []
+                        bex.push(voshxarArr[l])
+                        for (var k in bex) {
+                            if (bex[k].energy >= m) {
+                                var emptyCells = this.chooseCellmul([0]);
+                                var newCell = random(emptyCells);
+                                if (newCell) {
+                                    var newX = newCell[0];
+                                    var newY = newCell[1];
+                                    matrix[newY][newX] = this.index;
+                                    var newVoshxar = new Voshxar(newX, newY, this.index);
+                                    voshxarArr.push(newVoshxar);
+                                    this.energy = 7;
+                                }
+                            }
                         }
                     }
                 }

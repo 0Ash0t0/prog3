@@ -32,25 +32,29 @@ class Gishatich extends Base {
         else {
             var g = 0
         }
-        var emptyCells = this.chooseCellmul([1])
-        for (var i in emptyCells) {
-            if (emptyCells[i].gender == g) {
-                var beg = []
-                beg.push(emptyCells[i])
-                for (var k in beg) {
-                    if (beg[k].energy == m) {
-                        var emptyCells = this.chooseCellmul([0]);
-                        var newCell = random(emptyCells);
+        var gishatichner = this.chooseCellmul([3])
+        for (var i in gishatichner) {
+            for (var l in gishatichArr) {
+                if (gishatichArr[l].y == gishatichner[i][1] && gishatichArr[l].x == gishatichner[i][0]) {
+                    if (gishatichArr[l].gender == g) {
+                        var beg = []
+                        bex.push(gishatichArr[l])
+                        for (var k in beg) {
+                            if (beg[k].energy >= 10) {
+                                var emptyCells = this.chooseCellmul([0]);
+                                var newCell = random(emptyCells);
 
-                        // console.log(emptyCells);
-                        if (newCell) {
-                            var newX = newCell[0];
-                            var newY = newCell[1];
-                            matrix[newY][newX] = this.index;
+                                // console.log(emptyCells);
+                                if (newCell) {
+                                    var newX = newCell[0];
+                                    var newY = newCell[1];
+                                    matrix[newY][newX] = this.index;
 
-                            var newGishatich = new Gishatich(newX, newY, this.index);
-                            gishatichArr.push(newGishatich);
-                            this.energy = 3;
+                                    var newGishatich = new Gishatich(newX, newY, this.index);
+                                    gishatichArr.push(newGishatich);
+                                    this.energy = 3;
+                                }
+                            }
                         }
                     }
                 }

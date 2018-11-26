@@ -1,4 +1,14 @@
-alert("Create by Ashot Galstyan");
+var socket = io.connect('http://localhost:4444');
+var statistics = {
+    "timestamp": "",
+    "g": 0,
+    "xot": 0,
+    "xk": 0,
+    "a": 0,
+    "f": 0,
+    "b": 0,
+    "framecount": 0
+}
 var matrix = [];
 var n = 60;
 var side = 10;
@@ -20,7 +30,6 @@ function setup() {
     }
     frameRate(20);
     createCanvas(matrix[0].length * side, matrix.length * side);
-    //cnv.mouseClicked(atom)
     background('#acacac');
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -48,14 +57,14 @@ function setup() {
             }
         }
     }
-    // console.log(grassArr);
-    // for (var i in grassArr) {
-    //     var found = grassArr[i].chooseCell(0);
-    //     //console.log(found);
-    // }
 }
 function draw() {
     exanak();
+    if (frameCount % 500 === 0) {
+        statistics.timestamp = (new Date()).toString();
+        statistics.framecount = frameCount;
+        socket.emit("send data", statistics);
+    }
     for (var i in grassArr) {
         grassArr[i].mul();
     }
@@ -64,21 +73,17 @@ function draw() {
     }
     for (var i in gishatichArr) {
         gishatichArr[i].eat();
-
     }
     for (var i in amenakerArr) {
-        amenakerArr[i].eat();
+       amenakerArr[i].eat();
     }
     for (var i in fermerArr) {
         fermerArr[i].eat();
     }
-    for (var i in atomArr) {
-        atomArr[i].boom();
-    }
+
 }
 function exanak() {
     var p = document.getElementById("p");
-    //var aui = [0, 255];
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             //Garun
@@ -217,44 +222,42 @@ function exanak() {
 }
 function mouseClicked() {
     console.log("asdfadsf")
-    
+
     var x = mouseX;
     var y = mouseY;
-    var i = Math.floor(x/side);
-    var k = Math.floor(y/side);
-    //console.log(i,k)
-    matrix[k][i] = 6
-
-
-
-    if (matrix[k][i] == 5) {
+    x = Math.floor(x / side);
+    y = Math.floor(y / side);
+    if (x > 60) {
+        x = 60
+    }
+    if (y > 60) {
+        y = 60
+    }
+    if (matrix[y][x] == 5) {
         for (var i in fermerArr) {
             if (this.x == fermerArr[i].x && this.y == fermerArr[i].y) {
                 fermerArr.splice(i, 1);
-                this.energy++;
                 break;
             }
         }
     }
-    if (matrix[k][i] == 4) {
+    else if (matrix[y][x] == 4) {
         for (var i in amenakerArr) {
             if (this.x == amenakerArr[i].x && this.y == amenakerArr[i].y) {
                 amenakerArr.splice(i, 1);
-                this.energy++;
                 break;
             }
         }
     }
-    if (matrix[k][i] == 3) {
+    else if (matrix[y][x] == 3) {
         for (var i in gishatichArr) {
             if (this.x == gishatichArr[i].x && this.y == gishatichArr[i].y) {
                 gishatichArr.splice(i, 1);
-                this.energy++;
                 break;
             }
         }
     }
-    else if (matrix[k][i] == 2) {
+    else if (matrix[y][x] == 2) {
         for (var i in voshxarArr) {
             if (this.x == voshxarArr[i].x && this.y == voshxarArr[i].y) {
                 matrix[this.y][this.x] = 0;
@@ -263,14 +266,17 @@ function mouseClicked() {
             }
         }
     }
-    else if (matrix[k][i] == 1) {
+    else if (matrix[y][x] == 1) {
         for (var i in grassArr) {
-            if (this.x == grassArr[i].x && this.y == grassArr[i].y) {
+            if (x == grassArr[i].x && y == grassArr[i].y) {
                 grassArr.splice(i, 1);
-                this.energy++;
                 break;
             }
         }
     }
-    atomArr.push(new Atom(i, k, 6));
+    matrix[y][x] = 6
+    atomArr.push(new Atom(x, y, 6));
+    for (var i in atomArr) {
+        atomArr[i].boom();
+    }
 }
