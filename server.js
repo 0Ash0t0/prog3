@@ -6,9 +6,10 @@ var io = require('socket.io')(server);
 var statData = []; //ստատիստիկան պահպանող օբյեկտների զանգվածը
 
 //եթե ֆայլը կա
-if (fs.existsSync("public/data.json")) {
+if (fs.existsSync("public/statistics.json")) {
     //կարդում ենք ֆայլից և անմիջապես դարձնում օբյեկտ 
-    var statData = require("./public/data.json");
+    var statData = require(".public/statistics.json");
+    console.log(9999);
 }
 
 //սահմանում ենք, ստատիկ ֆայլերի դիրեկտորիան
@@ -31,12 +32,15 @@ server.listen(4444);
 io.on('connection', function (socket) {
     socket.on("send data", function (data) {
         statData.push(data); //ավելացնում ենք նոր տվյալը զանգվածում
-        fs.writeFile('public/data.json', JSON.stringify(statData)); //գրում ենք ստատսիտկայի տվյալները ֆայլի մեջ
+
+        fs.appendFileSync('public/statistics.json', JSON.stringify(statData)); //գրում ենք ստատսիտկայի տվյալները ֆայլի մեջ
+
     })
+  
 
     socket.on("get stats", function () { //երբ կլիենտը ուղարկում է "get stats" 
         //կարդում ենք ստատիստիկայի ֆայլը
-        fs.readFile('public/data.json', "utf8", function(err, statisticsFromFile) {
+        fs.readFile('public/statistics.json', "utf8", function(err, statisticsFromFile) {
             //և ուղարկում ենք այն "send stats" պիտակով
             socket.emit("send stats",statisticsFromFile);    
         });

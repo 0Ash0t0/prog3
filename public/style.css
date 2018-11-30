@@ -1,0 +1,36 @@
+*{
+    color:white;
+}
+
+body {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #061c31;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#centerImage {
+    /*background-image: url("");*/
+    background-repeat: no-repeat;
+    width: 539px;
+    height: 304px;
+    background-size: cover;
+}
+
+
+div{
+    margin-left:25px;
+    margin-right:25px;
+    text-align: left;
+}
+
+table, tr, td{
+    border: solid 1px white;
+    border-collapse: collapse;
+    padding:5px;
+    margin-top:10px;
+}

@@ -1,14 +1,14 @@
 var socket = io.connect('http://localhost:4444');
-var statistics = {
-    "timestamp": "",
-    "g": 0,
-    "xot": 0,
-    "xk": 0,
-    "a": 0,
-    "f": 0,
-    "b": 0,
-    "framecount": 0
-}
+var kadr = {
+    "xotakeriqanak": 0,
+    "xotiqanaky": 0,
+    "gishatichiqanak" : 0,
+    "fermeriqanak" : 0,
+    "amenakeriqanak" : 0,
+    "atomiqanak" : 0
+
+
+};
 var matrix = [];
 var n = 60;
 var side = 10;
@@ -19,7 +19,7 @@ var amenakerArr = [];
 var fermerArr = [];
 var atomArr = []
 var ex;
-
+var socket = io.connect('http://localhost:4444');
 
 function setup() {
     for (var y = 0; y < n; y++) {
@@ -60,10 +60,34 @@ function setup() {
 }
 function draw() {
     exanak();
-    if (frameCount % 500 === 0) {
-        statistics.timestamp = (new Date()).toString();
-        statistics.framecount = frameCount;
-        socket.emit("send data", statistics);
+    if (frameCount % 100 === 0) {
+        function changeView(stat) {
+            var c = document.getElementById("xotakeriqanak");
+            var k = document.getElementById("xotiqanaky");
+            var g = document.getElementById("gishatichiqanak");
+            var v = document.getElementById("fermeriqanak");
+            var d = document.getElementById("amenakeriqanak");
+            var b = document.getElementById("atomiqanak");
+            c.innerHTML = stat.xotakeriqanak;
+            k.innerHTML = stat.xotiqanaky;
+            g.innerHTML = stat.gishatichiqanak;
+            v.innerHTML = stat.fermeriqanak;
+            d.innerHTML = stat.amenakeriqanak;
+            b.innerHTML = stat.atomiqanak;
+        }
+    
+            function handleSubmit(evt) {
+                kadr.xotakeriqanak = voshxarArr.length;
+                kadr.xotiqanaky = grassArr.length;
+                kadr.gishatichiqanak = gishatichArr.length;
+                kadr.fermeriqanak = fermerArr.length;
+                kadr.amenakeriqanak = amenakerArr.length;
+                kadr.atomiqanak = atomArr.length;
+                changeView(kadr);
+                socket.emit("send data", kadr);
+               
+            }
+            handleSubmit(kadr);
     }
     for (var i in grassArr) {
         grassArr[i].mul();

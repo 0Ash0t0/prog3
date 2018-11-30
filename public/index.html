@@ -1,8 +1,12 @@
 <html>
    <head>
         <meta charset="UTF-8">
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
        <script src="class.base.js"></script>
        <script src="class.xot.js"></script>
        <script src="class.xotaker.js"></script>
@@ -14,6 +18,36 @@
        
    </head>
    <body>
+        <div class="table-responsive"><h2>Այս սեսիայի ստատիստիկան(ամեն 500 կադրը մեկ)</h2>
+            <table class="table">
+                <tr>
+                    <td>Խոտի Քանակ</td>
+                    <td id="xotiqanaky">0</td>
+                </tr>
+                <tr>
+                    <td>Գիշատիչի Քանակ</td>
+                    <td id="gishatichiqanak">0</td>
+                </tr>
+                <tr>
+                    <td>Խոտակերի Քանակ</td>
+                    <td id="xotakeriqanak">0</td>
+                </tr>
+                <tr>
+                    <td>Ֆերմերի Քանակ</td>
+                    <td id="fermeriqanak">0</td>
+                </tr>
+                <tr>
+                    <td>Ատոմի Քանակ</td>
+                    <td id="atomiqanak">0</td>
+                </tr>
+                <tr>
+                    <td>Ամենակերի Քանակ</td>
+                    <td id="amenakeriqanak">0</td>
+                </tr>
+            </table>
+        </div>
+        <p id="p"></p>
        <p id = "p"></p>
+
    </body>
 </html>
