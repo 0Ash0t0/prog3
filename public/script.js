@@ -5,10 +5,11 @@ var kadr = {
     "gishatichiqanak" : 0,
     "fermeriqanak" : 0,
     "amenakeriqanak" : 0,
-    "atomiqanak" : 0
+    "specialevntiqanak" : 0
 
 
 };
+var specialevnt = 0;
 var matrix = [];
 var n = 60;
 var side = 10;
@@ -60,20 +61,20 @@ function setup() {
 }
 function draw() {
     exanak();
-    if (frameCount % 100 === 0) {
+    if (frameCount % 500 === 0) {
         function changeView(stat) {
             var c = document.getElementById("xotakeriqanak");
             var k = document.getElementById("xotiqanaky");
             var g = document.getElementById("gishatichiqanak");
             var v = document.getElementById("fermeriqanak");
             var d = document.getElementById("amenakeriqanak");
-            var b = document.getElementById("atomiqanak");
+            var b = document.getElementById("specialevntiqanak");
             c.innerHTML = stat.xotakeriqanak;
             k.innerHTML = stat.xotiqanaky;
             g.innerHTML = stat.gishatichiqanak;
             v.innerHTML = stat.fermeriqanak;
             d.innerHTML = stat.amenakeriqanak;
-            b.innerHTML = stat.atomiqanak;
+            b.innerHTML = stat.specialevntiqanak;
         }
     
             function handleSubmit(evt) {
@@ -82,7 +83,7 @@ function draw() {
                 kadr.gishatichiqanak = gishatichArr.length;
                 kadr.fermeriqanak = fermerArr.length;
                 kadr.amenakeriqanak = amenakerArr.length;
-                kadr.atomiqanak = atomArr.length;
+                kadr.specialevntiqanak = specialevnt;
                 changeView(kadr);
                 socket.emit("send data", kadr);
                
@@ -245,17 +246,17 @@ function exanak() {
     }
 }
 function mouseClicked() {
-    console.log("asdfadsf")
+    specialevnt++;
 
     var x = mouseX;
     var y = mouseY;
     x = Math.floor(x / side);
     y = Math.floor(y / side);
-    if (x > 60) {
-        x = 60
+    if (x > n) {
+        x = n
     }
-    if (y > 60) {
-        y = 60
+    else if (y > n) {
+        y = n
     }
     if (matrix[y][x] == 5) {
         for (var i in fermerArr) {

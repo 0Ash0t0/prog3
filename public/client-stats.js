@@ -14,7 +14,7 @@ socket.on("send stats",function(statistics){
     statistics = JSON.parse(statistics);
     //console.log(statistics); //այստեղ null է տալիսս 
     table.innerHTML = "";
-    tableHTML = "<tr><td>խոտակերի քանակ</td><td>խոտի քանակ</td><td>գիշատիչի քանակ</td><td>ֆերմերի քանակ</td><td>ատոմի քանակ</td><td>ամենակերի քանակ</td></tr>";
+    tableHTML = "<tr><td>խոտակերի քանակ</td><td>խոտի քանակ</td><td>գիշատիչի քանակ</td><td>ֆերմերի քանակ</td><td>հատուկ իրադարձության քանակ քանակ</td><td>ամենակերի քանակ</td></tr>";
     for(var st of statistics){
      //   console.log(st.xotakeriqanak);
         for(var i in statistics){
@@ -25,7 +25,7 @@ socket.on("send stats",function(statistics){
         tableHTML+="<td>"+st.gishatichiqanak+"</td>";
         tableHTML+="<td>"+st.fermeriqanak+"</td>";
         tableHTML+="<td>"+st.amenakeriqanak+"</td>";
-        tableHTML+="<td>"+st.atomiqanak+"</td>";
+        tableHTML+="<td>"+st.specialevntiqanak+"</td>";
      //   console.log(tableHTML);
         tableHTML+="</tr>";
         }
