@@ -29,6 +29,14 @@ function setup() {
             matrix[y][x] = random([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 4, 5])
         }
     }
+    matrix = [ 
+        [4,4,4,4,4],
+        [4,4,4,4,4],
+        [4,4,4,4,4],
+        [4,4,4,4,4],
+        [4,4,4,4,4]
+   ]
+    
     frameRate(20);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
@@ -90,21 +98,21 @@ function draw() {
             }
             handleSubmit(kadr);
     }
-    for (var i in grassArr) {
-        grassArr[i].mul();
-    }
-    for (var i in voshxarArr) {
-        voshxarArr[i].eat();
-    }
-    for (var i in gishatichArr) {
-        gishatichArr[i].eat();
-    }
-    for (var i in amenakerArr) {
-       amenakerArr[i].eat();
-    }
-    for (var i in fermerArr) {
-        fermerArr[i].eat();
-    }
+    // for (var i in grassArr) {
+    //     grassArr[i].mul();
+    // }
+    // for (var i in voshxarArr) {
+    //     voshxarArr[i].eat();
+    // }
+    // for (var i in gishatichArr) {
+    //     gishatichArr[i].eat();
+    // }
+    // for (var i in amenakerArr) {
+    //    amenakerArr[i].eat();
+    // }
+    // for (var i in fermerArr) {
+    //     fermerArr[i].eat();
+    // }
 
 }
 function exanak() {
@@ -266,10 +274,8 @@ function mouseClicked() {
         y = 0 
     }
     if (matrix[y][x] == 5) {
-        console.log("sxal");
         for (var i in fermerArr) {
-            
-            if (this.x == fermerArr[i].x && this.y == fermerArr[i].y) {
+            if (x == fermerArr[i].x && y == fermerArr[i].y) {
                 fermerArr.splice(i, 1);
                 break;
             }
@@ -277,8 +283,8 @@ function mouseClicked() {
     }
     else if (matrix[y][x] == 4) {
         for (var i in amenakerArr) {
-           
-            if (this.x == amenakerArr[i].x && this.y == amenakerArr[i].y) {
+            if (x == amenakerArr[i].x && y == amenakerArr[i].y) {
+                console.log("1")
                 amenakerArr.splice(i, 1);
                 break;
             }
@@ -286,8 +292,7 @@ function mouseClicked() {
     }
     else if (matrix[y][x] == 3) {
         for (var i in gishatichArr) {
-            
-            if (this.x == gishatichArr[i].x && this.y == gishatichArr[i].y) {
+            if (x == gishatichArr[i].x && y == gishatichArr[i].y) {
                 gishatichArr.splice(i, 1);
                 break;
             }
@@ -295,9 +300,7 @@ function mouseClicked() {
     }
     else if (matrix[y][x] == 2) {
         for (var i in voshxarArr) {
-           
-            if (this.x == voshxarArr[i].x && this.y == voshxarArr[i].y) {
-                matrix[this.y][this.x] = 0;
+            if (x == voshxarArr[i].x && y == voshxarArr[i].y) {
                 voshxarArr.splice(i, 1);
                 break;
             }
@@ -305,7 +308,6 @@ function mouseClicked() {
     }
     else if (matrix[y][x] == 1) {
         for (var i in grassArr) {
-            
             if (x == grassArr[i].x && y == grassArr[i].y) {
                 grassArr.splice(i, 1);
                 break;

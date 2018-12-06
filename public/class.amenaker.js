@@ -34,7 +34,6 @@ class Amenaker extends Base {
                 for (var i in gishatichArr) {
                     if (this.x == gishatichArr[i].x && this.y == gishatichArr[i].y) {
                         gishatichArr.splice(i, 1);
-                        //console.log("kerav gishatich");
                         this.energy++;
                         break;
                     }
@@ -53,7 +52,6 @@ class Amenaker extends Base {
                 for (var i in grassArr) {
                     if (this.x == grassArr[i].x && this.y == grassArr[i].y) {
                         grassArr.splice(i, 1);
-                        // console.log("kerav xot");
                         this.energy++;
                         break;
                     }
