@@ -252,14 +252,23 @@ function mouseClicked() {
     var y = mouseY;
     x = Math.floor(x / side);
     y = Math.floor(y / side);
+    
     if (x > n) {
         x = n
     }
     else if (y > n) {
         y = n
     }
+    else if (x <= 0){
+        x = 0 
+    }
+    else if (y <= 0){
+        y = 0 
+    }
     if (matrix[y][x] == 5) {
+        console.log("sxal");
         for (var i in fermerArr) {
+            
             if (this.x == fermerArr[i].x && this.y == fermerArr[i].y) {
                 fermerArr.splice(i, 1);
                 break;
@@ -268,6 +277,7 @@ function mouseClicked() {
     }
     else if (matrix[y][x] == 4) {
         for (var i in amenakerArr) {
+           
             if (this.x == amenakerArr[i].x && this.y == amenakerArr[i].y) {
                 amenakerArr.splice(i, 1);
                 break;
@@ -276,6 +286,7 @@ function mouseClicked() {
     }
     else if (matrix[y][x] == 3) {
         for (var i in gishatichArr) {
+            
             if (this.x == gishatichArr[i].x && this.y == gishatichArr[i].y) {
                 gishatichArr.splice(i, 1);
                 break;
@@ -284,6 +295,7 @@ function mouseClicked() {
     }
     else if (matrix[y][x] == 2) {
         for (var i in voshxarArr) {
+           
             if (this.x == voshxarArr[i].x && this.y == voshxarArr[i].y) {
                 matrix[this.y][this.x] = 0;
                 voshxarArr.splice(i, 1);
@@ -293,6 +305,7 @@ function mouseClicked() {
     }
     else if (matrix[y][x] == 1) {
         for (var i in grassArr) {
+            
             if (x == grassArr[i].x && y == grassArr[i].y) {
                 grassArr.splice(i, 1);
                 break;
