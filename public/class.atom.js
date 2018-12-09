@@ -218,14 +218,6 @@ class Atom extends Base {
                         }
                     }
                 }
-                else if (matrix[newY][newX] == 4) {
-                    for (var i in amenakerArr) {
-                        if (newX == amenakerArr[i].x && newY == amenakerArr[i].y) {
-                            matrix[newY][newX] = 0;
-                            amenakerArr.splice(i, 1);
-                        }
-                    }
-                }
                 else if (matrix[newY][newX] == 5) {
                     for (var i in fermerArr) {
                         if (newX == fermerArr[i].x && newY == fermerArr[i].y) {

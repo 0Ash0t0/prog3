@@ -277,7 +277,6 @@ function mouseClicked() {
     else if (matrix[y][x] == 4) {
         for (var i in amenakerArr) {
             if (x == amenakerArr[i].x && y == amenakerArr[i].y) {
-                console.log("1")
                 amenakerArr.splice(i, 1);
                 break;
             }
